@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Form } from "reacto-form";
 // import { applyTheme } from "helpers";
 import Field from "./../../Field/v1/Field";
+import Select from "./../../Select/v1/Select";
 import TextInput from "./../../TextInput/v1/TextInput";
 import ErrorsBlock from "./../../ErrorsBlock/v1/ErrorsBlock";
 import Button from "./../../Button/v1/Button";
@@ -241,19 +242,16 @@ class AddressBookForm extends Component {
     //   // if no region optioins
     //   // render a TextField
     //   regionField = (
-    //     <Components.TextField
-    //       i18nKeyLabel="address.region"
+    //     <TextInput
     //       label="Region"
     //       name="region"
-    //       onChange={this.onFieldChange}
-    //       value={fields.region}
     //     />
     //   );
     // } else {
     //   // if region optioins
     //   // render a Select
     //   regionField = (
-    //     <Components.Select
+    //     <Select
     //       i18nKeyLabel="address.region"
     //       label="Region"
     //       name="region"
@@ -264,18 +262,13 @@ class AddressBookForm extends Component {
     //   );
     // }
     return (
-      <Form ref={i => { this.form = i; }}  onSubmit={this.onSubmit} onChange={this.onFieldChange} validator={this.testValidator}>
+      <Form ref={i => { this.form = i; }} onSubmit={this.onSubmit} onChange={this.onFieldChange} validator={this.testValidator}>
         <div className="row">
           <div className="col-md-6">
-            {/* <Components.Select
-              i18nKeyLabel="address.country"
-              label="Country"
-              name="country"
-              options={countries}
-              onChange={this.onSelectChange}
-              placeholder="Country"
-              value={fields.country}
-                  /> */}
+            <Field label="Country" name="country">
+              <Select name="country" options={countries} />
+              <ErrorsBlock names={["country"]}/>
+            </Field>
           </div>
         </div>
 
